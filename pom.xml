@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ========= -->
+	<!--  PROJECT  -->
+	<!-- ========= -->
+	<groupId>com.coyote.big_city_library</groupId>
+	<artifactId>rest_client_public</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>rest_client_public</name>
+	<description>Project for OpenClassrooms : RESTful client for libraries in a big city</description>
+
+	<!-- ======== -->
+	<!--  PARENT  -->
+	<!-- ======== -->
+	<!-- Doc : https://docs.spring.io/spring-boot/docs/2.6.2/maven-plugin/reference/htmlsingle/ -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<!-- ============ -->
+	<!--  PROPERTIES  -->
+	<!-- ============ -->
+	<properties>
+		<!-- The entry point class to start the app -->
+		<start-class>com.coyote.big_city_library.rest_client_public.RestClientPublicApplication</start-class>
+		<!-- Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- Java version -->
+		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<!-- Dependencies versions -->
+	</properties>
+
+	<!-- ============== -->
+	<!--  DEPENDENCIES  -->
+	<!-- ============== -->
+	<dependencies>
+
+		<!-- ========================================= -->
+		<!--   Spring Framework - https://spring.io/   -->
+		<!-- ========================================= -->
+
+		<!-- STARTERS -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- DEV TOOLS -->
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Project Lombok - https://projectlombok.org/ -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<!-- ======= -->
+	<!--  BUILD  -->
+	<!-- ======= -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+					
+				</configuration>
+
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

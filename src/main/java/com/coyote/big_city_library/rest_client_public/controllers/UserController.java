@@ -6,14 +6,15 @@ import com.coyote.big_city_library.rest_client_public.dto.UserDto;
 import com.coyote.big_city_library.rest_client_public.feign_clients.UserClient;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RestController
+@Controller
 @RequestMapping("/users")
 public class UserController {
 
@@ -21,10 +22,11 @@ public class UserController {
     private UserClient userClient;
     
     @GetMapping("")
-    public List<UserDto> findAllUsers() {
+    public String findAllUsers(Model model) {
         List<UserDto> users = userClient.findAllUsers();
         log.debug("findAllUsers() => {} user(s) found", users.size());
-        return users;
+        model.addAttribute("users", users);
+        return "Users";
     }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "BigCityLibrary-RestServer", url = "localhost:9001", path = "/api/users")
+@FeignClient(name = "BigCityLibrary-RestServer-user", url = "localhost:9001", path = "/api/users")
 public interface UserClient {
     
     @GetMapping("")

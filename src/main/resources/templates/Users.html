@@ -13,12 +13,12 @@
 
     <h1>Utilisateurs</h1>
 
-    <div class="row">
+    <div class="row" th:unless="${#lists.isEmpty(users)}">
         <div th:each="user : ${users}" class="border my-1">
             <a th:href="@{|/users/${user.id}|}" >
-                <p th:text= "${user.pseudo}"></p>
-                <p th:text= "${user.email}"></p>
-                <p th:text= "${user.password}"></p>
+                <p th:text= "${user.pseudo}">Pseudo</p>
+                <p th:text= "${user.email}">Email@email.com</p>
+                <p th:text= "${user.password}">******</p>
             </a>
         </div>
     </div>

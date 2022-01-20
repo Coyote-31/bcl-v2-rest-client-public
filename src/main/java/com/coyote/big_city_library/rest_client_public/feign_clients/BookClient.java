@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "BigCityLibrary-RestServer-book", url = "localhost:9001", path = "/api/books")
 public interface BookClient {
     
-    @GetMapping("/research")
-    List<BookDto> researchBooks(@RequestParam("bookTitle") String bookTitle);
+    @GetMapping("/search")
+    List<BookDto> searchBooks(
+        @RequestParam("bookTitle") String bookTitle,
+        @RequestParam("authorName") String authorName,
+        @RequestParam("publisherName") String publisherName);
     
 }

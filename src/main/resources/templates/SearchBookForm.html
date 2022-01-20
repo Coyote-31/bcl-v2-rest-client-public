@@ -15,11 +15,21 @@
 
     <h2>Formulaire de recherche :</h2>
 
-    <form action="#" th:action="@{/recherche}" th:object="${research_form}" method="post">
+    <form action="#" th:action="@{/recherche}" th:object="${search_form}" method="post">
 
         <div class="mb-3">
-            <label for="bookTitleInput" class="form-label">Titre du livre</label>
+            <label for="bookTitleInput" class="form-label">Titre</label>
             <input type="text" class="form-control" id="bookTitleInput" th:field="*{bookTitle}" />
+        </div>
+
+        <div class="mb-3">
+            <label for="authorNameInput" class="form-label">Auteur</label>
+            <input type="text" class="form-control" id="authorNameInput" th:field="*{authorName}" />
+        </div>
+
+        <div class="mb-3">
+            <label for="publisherNameInput" class="form-label">Editeur</label>
+            <input type="text" class="form-control" id="publisherNameInput" th:field="*{publisherName}" />
         </div>
 
         <button type="submit" class="btn btn-primary">Valider</button>

@@ -3,8 +3,8 @@ package com.coyote.big_city_library.rest_client_public.controllers;
 import java.util.List;
 
 import com.coyote.big_city_library.rest_client_public.dto.BookDto;
-import com.coyote.big_city_library.rest_client_public.form_handlers.ResearchBookForm;
-import com.coyote.big_city_library.rest_client_public.services.ResearchBookService;
+import com.coyote.big_city_library.rest_client_public.form_handlers.SearchBookForm;
+import com.coyote.big_city_library.rest_client_public.services.SearchBookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,30 +19,30 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("/recherche")
-public class ResearchBookController {
+public class SearchBookController {
 
     @Autowired
-    ResearchBookService researchBookService;
+    SearchBookService searchBookService;
     
     @GetMapping("")
-    public String researchBookForm(Model model) {
+    public String searchBookForm(Model model) {
 
-        model.addAttribute("research_form", new ResearchBookForm());
+        model.addAttribute("search_form", new SearchBookForm());
 
-        return "ResearchBookForm";
+        return "SearchBookForm";
     }
 
     @PostMapping("")
-    public String researchBookSubmit(@ModelAttribute ResearchBookForm researchBookForm, Model model) {
+    public String searchBookSubmit(@ModelAttribute SearchBookForm searchBookForm, Model model) {
 
-        log.debug("researchBookSubmit() with {}", researchBookForm.toString());
-        model.addAttribute("research_form", researchBookForm);
+        log.debug("searchBookSubmit() with {}", searchBookForm.toString());
+        model.addAttribute("search_form", searchBookForm);
 
-        List<BookDto> booksFound = researchBookService.researchBooks(researchBookForm.getBookTitle());
+        List<BookDto> booksFound = searchBookService.searchBooks(searchBookForm);
         log.debug("booksFound.size() = {}", booksFound.size());
         model.addAttribute("books_found", booksFound);
 
-        return "ResearchBookForm";
+        return "SearchBookForm";
     }
 
 }

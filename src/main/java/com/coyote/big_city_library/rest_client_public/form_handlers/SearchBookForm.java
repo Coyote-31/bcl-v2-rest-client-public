@@ -9,8 +9,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ResearchBookForm {
+public class SearchBookForm {
 
-    String bookTitle;
+    private String bookTitle;
+
+    private String authorName;
+
+    private String publisherName;
     
 }

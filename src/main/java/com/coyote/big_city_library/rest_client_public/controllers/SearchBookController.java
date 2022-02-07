@@ -2,6 +2,8 @@ package com.coyote.big_city_library.rest_client_public.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.coyote.big_city_library.rest_client_public.dto.BookDto;
 import com.coyote.big_city_library.rest_client_public.form_handlers.SearchBookForm;
 import com.coyote.big_city_library.rest_client_public.services.SearchBookService;
@@ -33,12 +35,12 @@ public class SearchBookController {
     }
 
     @PostMapping("")
-    public String searchBookSubmit(@ModelAttribute SearchBookForm searchBookForm, Model model) {
+    public String searchBookSubmit(HttpSession httpSession, @ModelAttribute SearchBookForm searchBookForm, Model model) {
 
         log.debug("searchBookSubmit() with {}", searchBookForm.toString());
         model.addAttribute("search_form", searchBookForm);
 
-        List<BookDto> booksFound = searchBookService.searchBooks(searchBookForm);
+        List<BookDto> booksFound = searchBookService.searchBooks(httpSession, searchBookForm);
         log.debug("booksFound.size() = {}", booksFound.size());
         model.addAttribute("books_found", booksFound);
 

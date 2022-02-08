@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import feign.FeignException.Forbidden;
+
 @Controller
 @RequestMapping("/authentification")
 public class LoginController {
@@ -31,9 +33,24 @@ public class LoginController {
     @PostMapping("/connexion")
     public String login(HttpSession httpSession, @ModelAttribute LoginForm loginForm, Model model) {
         
-        httpSession.setAttribute("jwt", loginService.getJWT(loginForm));
+        
+        try {
+            String jwt = loginService.getJWT(loginForm);
+            httpSession.setAttribute("jwt", jwt);
+            httpSession.setAttribute("pseudo", loginForm.getUsername());
 
-        return "redirect:/";
+            return "redirect:/";
+
+        } catch (Forbidden e) {
+            httpSession.removeAttribute("jwt");
+            httpSession.removeAttribute("pseudo");
+
+            model.addAttribute("error", "Pseudo/Mot de passe invalide");
+            model.addAttribute("login", loginForm);
+
+            return "LoginForm";
+        }
+
     }
     
 }

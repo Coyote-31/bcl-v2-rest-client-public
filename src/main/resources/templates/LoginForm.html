@@ -13,6 +13,8 @@
 
     <h1>Connexion</h1>
 
+    <div class="alert alert-danger" role="alert" th:if="${error}" th:text="${error}"></div>
+
     <form action="#" th:action="@{/authentification/connexion}" th:object="${login}" method="post">
 
         <div class="mb-3">

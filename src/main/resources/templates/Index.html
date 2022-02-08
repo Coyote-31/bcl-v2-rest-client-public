@@ -12,7 +12,11 @@
 
 <div class="container">
 
-    <h1 class="text-center">Bienvenue !</h1>
+    <h1 class="text-center">Bienvenue ! <span th:if="${session.pseudo}" th:text="${session.pseudo}"></span></h1>
+
+    <div class="alert alert-primary" role="alert" th:if="${session.jwt}">
+        JWT : <span class="text-break" th:text="${session.jwt}"></span>
+    </div>
 
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Long_Room_Interior%2C_Trinity_College_Dublin%2C_Ireland_-_Diliff.jpg/800px-Long_Room_Interior%2C_Trinity_College_Dublin%2C_Ireland_-_Diliff.jpg" 
         class="img-fluid rounded mx-auto d-block" alt="Bibliothèques">

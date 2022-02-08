@@ -33,7 +33,7 @@ public class LoginController {
         
         httpSession.setAttribute("jwt", loginService.getJWT(loginForm));
 
-        return "redirect:/recherche";
+        return "redirect:/";
     }
     
 }

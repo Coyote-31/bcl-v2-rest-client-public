@@ -1,11 +1,10 @@
 package com.coyote.big_city_library.rest_client_public.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.coyote.big_city_library.rest_client_public.dto.BookDto;
+import com.coyote.big_city_library.rest_client_public.dto.search_books.SearchBookDto;
 import com.coyote.big_city_library.rest_client_public.feign_clients.BookClient;
 import com.coyote.big_city_library.rest_client_public.form_handlers.SearchBookForm;
 
@@ -18,7 +17,7 @@ public class SearchBookService {
     @Autowired
     private BookClient bookClient;
     
-    public List<BookDto> searchBooks(HttpSession httpSession, SearchBookForm searchBookForm) {
+    public List<SearchBookDto> searchBooks(HttpSession httpSession, SearchBookForm searchBookForm) {
 
         Object oJWT = httpSession.getAttribute("jwt");
         String jwt = null;
@@ -35,7 +34,7 @@ public class SearchBookService {
                 searchBookForm.getAuthorName(), 
                 searchBookForm.getPublisherName());
         } else {
-            return new ArrayList<>();
+            throw new IllegalArgumentException("jwt cannot be null");
         }
 
     }

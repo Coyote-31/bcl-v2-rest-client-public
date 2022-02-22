@@ -30,10 +30,12 @@
                         <a class="nav-link" th:href="@{/recherche}">Recherche</a>
                         <a class="nav-link" disabled>Mes Livres</a>
                     </div>
-                    <div>
+                    <div th:if="${session.pseudo == null}">
                         <a class="btn btn-sm btn-primary" th:href="@{/authentification/connexion}">Connexion</a>
                     </div>
-
+                    <div th:if="${session.pseudo != null}">
+                        <a class="btn btn-sm btn-danger" th:href="@{/authentification/deconnexion}">Deconnexion</a>
+                    </div>
                 </div>
 
             </div>

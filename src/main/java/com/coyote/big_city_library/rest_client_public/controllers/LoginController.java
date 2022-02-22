@@ -22,6 +22,10 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    private static final String ATTR_JWT = "jwt";
+    private static final String ATTR_PSEUDO = "pseudo";
+    
+
     @GetMapping("/connexion")
     public String getLoginForm(Model model) {
 
@@ -31,19 +35,19 @@ public class LoginController {
     }
 
     @PostMapping("/connexion")
-    public String login(HttpSession httpSession, @ModelAttribute LoginForm loginForm, Model model) {
+    public String login(HttpSession session, @ModelAttribute LoginForm loginForm, Model model) {
         
         
         try {
             String jwt = loginService.getJWT(loginForm);
-            httpSession.setAttribute("jwt", jwt);
-            httpSession.setAttribute("pseudo", loginForm.getUsername());
+            session.setAttribute(ATTR_JWT, jwt);
+            session.setAttribute(ATTR_PSEUDO, loginForm.getUsername());
 
             return "redirect:/";
 
         } catch (Forbidden e) {
-            httpSession.removeAttribute("jwt");
-            httpSession.removeAttribute("pseudo");
+            session.removeAttribute(ATTR_JWT);
+            session.removeAttribute(ATTR_PSEUDO);
 
             model.addAttribute("error", "Pseudo/Mot de passe invalide");
             model.addAttribute("login", loginForm);
@@ -51,6 +55,15 @@ public class LoginController {
             return "LoginForm";
         }
 
+    }
+
+    @GetMapping("/deconnexion")
+    public String logout(HttpSession session) {
+
+        session.removeAttribute(ATTR_JWT);
+        session.removeAttribute(ATTR_PSEUDO);
+
+        return "redirect:/";
     }
     
 }

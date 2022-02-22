@@ -16,26 +16,19 @@ public class SearchBookService {
 
     @Autowired
     private BookClient bookClient;
+
+    @Autowired
+    private JwtService jwtService;
     
-    public List<SearchBookDto> searchBooks(HttpSession httpSession, SearchBookForm searchBookForm) {
+    public List<SearchBookDto> searchBooks(HttpSession session, SearchBookForm searchBookForm) {
 
-        Object oJWT = httpSession.getAttribute("jwt");
-        String jwt = null;
-        String bearerJwt = null;
+        String bearerJwt = jwtService.getBearerJwt(session);
 
-        if (oJWT != null) {
-            jwt = oJWT.toString();
-
-            bearerJwt = "Bearer " + jwt;
-    
-            return bookClient.searchBooks(
-                bearerJwt,
-                searchBookForm.getBookTitle(), 
-                searchBookForm.getAuthorName(), 
-                searchBookForm.getPublisherName());
-        } else {
-            throw new IllegalArgumentException("jwt cannot be null");
-        }
+        return bookClient.searchBooks(
+            bearerJwt,
+            searchBookForm.getBookTitle(), 
+            searchBookForm.getAuthorName(), 
+            searchBookForm.getPublisherName());
 
     }
 }

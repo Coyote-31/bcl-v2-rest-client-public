@@ -3,6 +3,7 @@ package com.coyote.big_city_library.rest_client_public.controllers;
 import javax.servlet.http.HttpSession;
 
 import com.coyote.big_city_library.rest_client_public.form_handlers.LoginForm;
+import com.coyote.big_city_library.rest_client_public.services.JwtService;
 import com.coyote.big_city_library.rest_client_public.services.LoginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private JwtService jwtService;
+
     private static final String ATTR_JWT = "jwt";
     private static final String ATTR_PSEUDO = "pseudo";
     
@@ -39,9 +43,11 @@ public class LoginController {
         
         
         try {
+            // TODO get pseudo from JWT
             String jwt = loginService.getJWT(loginForm);
             session.setAttribute(ATTR_JWT, jwt);
-            session.setAttribute(ATTR_PSEUDO, loginForm.getUsername());
+            String pseudo = jwtService.getUsername(jwt);
+            session.setAttribute(ATTR_PSEUDO, pseudo);
 
             return "redirect:/";
 

@@ -35,6 +35,13 @@
                     <div>Début : <span th:text= "${loan.loanDate}">00/00/0000</span></div>
                     <div>Etendu : <span th:text= "${loan.extend? 'Oui' : 'Non'}">Non</span></div>
                     <div>Fin : <span th:text= "${loan.extend? loan.loanDate.plusMonths(2) : loan.loanDate.plusMonths(1)}">00/00/0000</span></div>
+                    
+                    <!--/* Extend button */-->
+                    <div>
+                        <a class="btn btn-sm" 
+                        th:href="@{/mes-prets/etendre/{id}(id=${loan.id})}"
+                        th:classappend="${loan.extend? 'btn-secondary disabled' : 'btn-primary'}">Etendre le prêt</a>
+                    </div>
 
             </div>
         </div>

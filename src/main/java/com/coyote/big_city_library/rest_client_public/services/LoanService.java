@@ -25,5 +25,10 @@ public class LoanService {
 
         return loanClient.findLoansByUserPseudo(bearerJwt, pseudo);
     }
+
+    public void extendLoan(HttpSession session, Integer id) {
+        String bearerJwt = jwtService.getBearerJwt(session);
+        loanClient.extendLoan(bearerJwt, id);
+    }
     
 }

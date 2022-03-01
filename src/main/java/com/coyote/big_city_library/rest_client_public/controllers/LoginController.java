@@ -43,7 +43,6 @@ public class LoginController {
         
         
         try {
-            // TODO get pseudo from JWT
             String jwt = loginService.getJWT(loginForm);
             session.setAttribute(ATTR_JWT, jwt);
             String pseudo = jwtService.getUsername(jwt);

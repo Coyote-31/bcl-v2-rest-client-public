@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.coyote.big_city_library.rest_client_public.dto.LibraryDto;
 import com.coyote.big_city_library.rest_client_public.dto.search_books.SearchBookDto;
 import com.coyote.big_city_library.rest_client_public.form_handlers.SearchBookForm;
+import com.coyote.big_city_library.rest_client_public.services.LibraryService;
 import com.coyote.big_city_library.rest_client_public.services.SearchBookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,10 @@ public class SearchBookController {
 
     @Autowired
     SearchBookService searchBookService;
-    
+
+    @Autowired
+    LibraryService libraryService;
+
     @GetMapping("")
     public String searchBookForm(Model model) {
 
@@ -35,14 +40,17 @@ public class SearchBookController {
     }
 
     @PostMapping("")
-    public String searchBookSubmit(HttpSession httpSession, @ModelAttribute SearchBookForm searchBookForm, Model model) {
+    public String searchBookSubmit(HttpSession session, @ModelAttribute SearchBookForm searchBookForm, Model model) {
 
         log.debug("searchBookSubmit() with {}", searchBookForm.toString());
         model.addAttribute("search_form", searchBookForm);
 
-        List<SearchBookDto> booksFound = searchBookService.searchBooks(httpSession, searchBookForm);
+        List<SearchBookDto> booksFound = searchBookService.searchBooks(session, searchBookForm);
         log.debug("booksFound.size() = {}", booksFound.size());
         model.addAttribute("books_found", booksFound);
+
+        List<LibraryDto> libraries = libraryService.findAllLibraries(session);
+        model.addAttribute("libraries", libraries);
 
         return "SearchBookForm";
     }

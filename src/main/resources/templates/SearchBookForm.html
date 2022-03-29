@@ -40,11 +40,11 @@
 
     <div th:unless="${#lists.isEmpty(books_found)}">
         <h2>Résultat(s) :</h2>
-    
+
         <div class="row">
             <div th:each="book : ${books_found}" class="border my-1">
                     <div>Titre : <span th:text= "${book.title}">Titre</span></div>
-                    <div> Auteur(s) : 
+                    <div> Auteur(s) :
                         <span th:each="author : ${book.authors}">
                             <span th:text= "${author.name}">Author</span>
                         </span>
@@ -52,6 +52,12 @@
                     <div>Editeur : <span th:text= "${book.publisher.name}">Publisher</span></div>
                     <div>Date : <span th:text= "${book.publicationDate}">00/00/0000</span></div>
                     <div>Exemplaires : <span th:text= "${#lists.size(book.exemplaries)}">7</span></div>
+
+                    <!-- Exemplaries by library -->
+                    <div th:each="library : ${libraries}" class="border my-1">
+                        <span th:text="${library.name}">Bibliothèque n°1 </span> : ?
+                    </div>
+
             </div>
         </div>
     </div>

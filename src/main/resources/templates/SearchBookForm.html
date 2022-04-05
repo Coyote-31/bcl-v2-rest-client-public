@@ -53,9 +53,13 @@
                     <div>Date : <span th:text= "${book.publicationDate}">00/00/0000</span></div>
                     <div>Exemplaires : <span th:text= "${#lists.size(book.exemplaries)}">7</span></div>
 
-                    <!-- Exemplaries by library -->
+                    <!-- Exemplaries by library
                     <div th:each="library : ${libraries}" class="border my-1">
                         <span th:text="${library.name}">Bibliothèque n°1 </span> : ?
+                    </div> -->
+
+                    <div th:each="library : ${book.getExemplariesByLibrary()}" class="border my-1">
+                        <span th:text="${library.key}">Bibliothèque n°1 </span> : <span th:text="${library.value}">42</span>
                     </div>
 
             </div>

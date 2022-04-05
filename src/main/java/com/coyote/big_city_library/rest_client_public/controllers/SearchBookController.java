@@ -49,8 +49,8 @@ public class SearchBookController {
         log.debug("booksFound.size() = {}", booksFound.size());
         model.addAttribute("books_found", booksFound);
 
-        List<LibraryDto> libraries = libraryService.findAllLibraries(session);
-        model.addAttribute("libraries", libraries);
+        // List<LibraryDto> libraries = libraryService.findAllLibraries(session);
+        // model.addAttribute("libraries", libraries);
 
         return "SearchBookForm";
     }

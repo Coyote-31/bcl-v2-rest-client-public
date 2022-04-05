@@ -10,11 +10,9 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class AuthorDto {
-
-    private Integer id;
+public class UserOnlyIdDto {
 
     @NonNull
-    private String name;
+    private Integer id;
 
 }

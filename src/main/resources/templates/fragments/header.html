@@ -27,8 +27,8 @@
 
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" th:href="@{/}">Accueil</a>
-                        <a class="nav-link" th:href="@{/recherche}">Recherche</a>
-                        <a class="nav-link" th:href="@{/mes-prets}">Mes Prêts</a>
+                        <a th:if="${session.pseudo != null}" class="nav-link" th:href="@{/recherche}">Recherche</a>
+                        <a th:if="${session.pseudo != null}" class="nav-link" th:href="@{/mes-prets}">Mes Prêts</a>
                     </div>
                     <div th:if="${session.pseudo == null}">
                         <a class="btn btn-sm btn-primary" th:href="@{/authentification/connexion}">Connexion</a>

@@ -45,12 +45,9 @@ public class SearchBookController {
         log.debug("searchBookSubmit() with {}", searchBookForm.toString());
         model.addAttribute("search_form", searchBookForm);
 
-        List<SearchBookDto> booksFound = searchBookService.searchBooks(session, searchBookForm);
+        List<SearchBookDto> booksFound = searchBookService.searchBooks(searchBookForm);
         log.debug("booksFound.size() = {}", booksFound.size());
         model.addAttribute("books_found", booksFound);
-
-        // List<LibraryDto> libraries = libraryService.findAllLibraries(session);
-        // model.addAttribute("libraries", libraries);
 
         return "SearchBookForm";
     }

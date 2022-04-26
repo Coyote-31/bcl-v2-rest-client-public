@@ -2,8 +2,6 @@ package com.coyote.big_city_library.rest_client_public.services;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.coyote.big_city_library.rest_client_public.dto.search_books.SearchBookDto;
 import com.coyote.big_city_library.rest_client_public.feign_clients.BookClient;
 import com.coyote.big_city_library.rest_client_public.form_handlers.SearchBookForm;
@@ -17,18 +15,12 @@ public class SearchBookService {
     @Autowired
     private BookClient bookClient;
 
-    @Autowired
-    private JwtService jwtService;
-    
-    public List<SearchBookDto> searchBooks(HttpSession session, SearchBookForm searchBookForm) {
-
-        String bearerJwt = jwtService.getBearerJwt(session);
+    public List<SearchBookDto> searchBooks(SearchBookForm searchBookForm) {
 
         return bookClient.searchBooks(
-            bearerJwt,
-            searchBookForm.getBookTitle(), 
-            searchBookForm.getAuthorName(), 
-            searchBookForm.getPublisherName());
+                searchBookForm.getBookTitle(),
+                searchBookForm.getAuthorName(),
+                searchBookForm.getPublisherName());
 
     }
 }

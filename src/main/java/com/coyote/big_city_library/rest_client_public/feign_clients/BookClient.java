@@ -6,7 +6,6 @@ import com.coyote.big_city_library.rest_client_public.dto.search_books.SearchBoo
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "BigCityLibrary-RestServer-book", url = "${feign_clients.url}", path = "/api/books")
@@ -14,7 +13,6 @@ public interface BookClient {
 
     @PostMapping("/search")
     List<SearchBookDto> searchBooks(
-            @RequestHeader("Authorization") String bearerJwt,
             @RequestParam("bookTitle") String bookTitle,
             @RequestParam("authorName") String authorName,
             @RequestParam("publisherName") String publisherName);

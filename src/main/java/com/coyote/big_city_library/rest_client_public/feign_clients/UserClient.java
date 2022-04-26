@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "BigCityLibrary-RestServer-user", url = "localhost:9001", path = "/api/users")
+@FeignClient(name = "BigCityLibrary-RestServer-user", url = "${feign_clients.url}", path = "/api/users")
 public interface UserClient {
-    
+
     @GetMapping("")
     List<UserDto> findAllUsers();
 
     @PostMapping("/add")
     UserDto addUser(@RequestBody UserDto userDto);
-    
+
 }

@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-@FeignClient(name = "BigCityLibrary-RestServer-library", url = "localhost:9001", path = "/api/libraries")
+@FeignClient(name = "BigCityLibrary-RestServer-library", url = "${feign_clients.url}", path = "/api/libraries")
 public interface LibraryClient {
 
     @GetMapping("")

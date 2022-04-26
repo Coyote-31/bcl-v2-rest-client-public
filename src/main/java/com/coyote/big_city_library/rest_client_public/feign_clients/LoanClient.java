@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-@FeignClient(name = "BigCityLibrary-RestServer-loan", url = "localhost:9001", path = "/api/loans")
+@FeignClient(name = "BigCityLibrary-RestServer-loan", url = "${feign_clients.url}", path = "/api/loans")
 public interface LoanClient {
-    
+
     @GetMapping("/user/{pseudo}")
-    List<LoanDto>  findLoansByUserPseudo(
-        @RequestHeader("Authorization") String bearerJwt,
-        @PathVariable String pseudo);
+    List<LoanDto> findLoansByUserPseudo(
+            @RequestHeader("Authorization") String bearerJwt,
+            @PathVariable String pseudo);
 
     @PutMapping("/extend/{id}")
     void extendLoan(
-        @RequestHeader("Authorization") String bearerJwt, 
-        @PathVariable Integer id);
-    
+            @RequestHeader("Authorization") String bearerJwt,
+            @PathVariable Integer id);
+
 }

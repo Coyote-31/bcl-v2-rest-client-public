@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "BigCityLibrary-RestServer-book", url = "localhost:9001", path = "/api/books")
+@FeignClient(name = "BigCityLibrary-RestServer-book", url = "${feign_clients.url}", path = "/api/books")
 public interface BookClient {
-    
+
     @PostMapping("/search")
     List<SearchBookDto> searchBooks(
-        @RequestHeader("Authorization") String bearerJwt,
-        @RequestParam("bookTitle") String bookTitle,
-        @RequestParam("authorName") String authorName,
-        @RequestParam("publisherName") String publisherName);
-    
+            @RequestHeader("Authorization") String bearerJwt,
+            @RequestParam("bookTitle") String bookTitle,
+            @RequestParam("authorName") String authorName,
+            @RequestParam("publisherName") String publisherName);
+
 }

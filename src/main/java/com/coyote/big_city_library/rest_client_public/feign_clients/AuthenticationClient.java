@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "BigCityLibrary-RestServer-authentication", url = "localhost:9001", path = "/api/auth")
+@FeignClient(name = "BigCityLibrary-RestServer-authentication", url = "${feign_clients.url}", path = "/api/auth")
 public interface AuthenticationClient {
-    
+
     @PostMapping("/login")
     String getJwt(@RequestBody LoginForm loginForm);
-    
+
 }

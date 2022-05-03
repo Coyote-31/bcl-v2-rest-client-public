@@ -11,36 +11,35 @@
 
 <body>
 
-    <div th:fragment="header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-            <div class="container-fluid">
-                <a class="navbar-brand ms-3" th:href="@{/}">📚 Bibliothèques de la Ville</a>
+        <div class="container-fluid">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand ms-3" th:href="@{/}">📚 Bibliothèques de la Ville</a>
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" th:href="@{/}">Accueil</a>
-                        <a class="nav-link" th:href="@{/recherche}">Recherche</a>
-                        <a th:if="${session.pseudo != null}" class="nav-link" th:href="@{/mes-prets}">Mes Prêts</a>
-                    </div>
-                    <div th:if="${session.pseudo == null}">
-                        <a class="btn btn-sm btn-primary" th:href="@{/authentification/connexion}">Connexion</a>
-                    </div>
-                    <div th:if="${session.pseudo != null}">
-                        <a class="btn btn-sm btn-danger" th:href="@{/authentification/deconnexion}">Deconnexion</a>
-                    </div>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Accueil</a>
+                    <a class="nav-link" th:href="@{/recherche}">Recherche</a>
+                    <a th:if="${session.pseudo != null}" class="nav-link" th:href="@{/mes-prets}">Mes Prêts</a>
                 </div>
-
+                <div th:if="${session.pseudo == null}">
+                    <a class="btn btn-sm btn-primary" th:href="@{/authentification/connexion}">Connexion</a>
+                </div>
+                <div th:if="${session.pseudo != null}">
+                    <a class="btn btn-sm btn-danger" th:href="@{/authentification/deconnexion}">Deconnexion</a>
+                </div>
             </div>
-        </nav>
-    </div>
+
+        </div>
+
+    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

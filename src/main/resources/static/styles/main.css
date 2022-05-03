@@ -1,1 +1,34 @@
-body {}
+@charset "UTF-8";
+
+/* ========================== */
+/* --------  FONTS  --------- */
+/* ========================== */
+
+/* ========================== */
+/* ----------- MAIN --------- */
+/* ========================== */
+
+html {
+    /* Debug oldies */
+    position: relative;
+
+    /* footer bottom*/
+    height: 100% !important;
+
+    font-size: 100%;
+
+    /* Affiche la scrollbar */
+    overflow-y: scroll;
+}
+
+body {
+    /* footer bottom*/
+    height: 100% !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}

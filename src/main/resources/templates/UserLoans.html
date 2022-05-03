@@ -17,42 +17,59 @@
 
         <h1>Mes prêts :</h1>
 
+        <!--/* loans of the login user */-->
         <div th:unless="${#lists.isEmpty(loans)}">
             <div class="row">
-                <div th:each="loan : ${loans}" class="border my-1">
 
-                    <!--/* Book details */-->
-                    <div>Titre : <span th:text="${loan.exemplary.book.title}">Titre</span></div>
-                    <div> Auteur(s) :
-                        <span th:each="author : ${loan.exemplary.book.authors}">
-                            <span th:text="${author.name}">Author</span>
-                        </span>
-                    </div>
-                    <div>Editeur : <span th:text="${loan.exemplary.book.publisher.name}">Publisher</span></div>
-                    <div>Date : <span th:text="${loan.exemplary.book.publicationDate}">00/00/0000</span></div>
+                <div th:each="loan : ${loans}" class="my-1">
 
-                    <hr>
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img th:src="${loan.exemplary.book.imgURL}" class="img-fluid rounded-start"
+                                    alt="Image de la couverture du livre.">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 th:text="${loan.exemplary.book.title}" class="card-title">Book Title</h5>
 
-                    <!--/* Loan details */-->
-                    <div>Prêt :</div>
-                    <div>Début : <span th:text="${loan.loanDate}">00/00/0000</span></div>
-                    <div>Etendu : <span th:text="${loan.extend? 'Oui' : 'Non'}">Non</span></div>
-                    <div>Fin : <span
-                            th:text="${loan.extend? loan.loanDate.plusMonths(2) : loan.loanDate.plusMonths(1)}">00/00/0000</span>
-                    </div>
+                                    <!--/* Book details */-->
+                                    <div> Auteur(s) :
+                                        <span th:each="author : ${loan.exemplary.book.authors}">
+                                            <span th:text="${author.name}">Author</span>
+                                        </span>
+                                    </div>
+                                    <div>Editeur : <span
+                                            th:text="${loan.exemplary.book.publisher.name}">Publisher</span></div>
+                                    <div>Date : <span th:text="${loan.exemplary.book.publicationDate}">00/00/0000</span>
+                                    </div>
 
-                    <!--/* Extend button */-->
-                    <div>
-                        <a class="btn btn-sm" th:href="@{/mes-prets/etendre/{id}(id=${loan.id})}"
-                            th:classappend="${loan.extend? 'btn-secondary disabled' : 'btn-primary'}">Etendre le
-                            prêt</a>
+                                    <hr>
+
+                                    <!--/* Loan details */-->
+                                    <div>Prêt :</div>
+                                    <div>Début : <span th:text="${loan.loanDate}">00/00/0000</span></div>
+                                    <div>Etendu : <span th:text="${loan.extend? 'Oui' : 'Non'}">Non</span></div>
+                                    <div>Fin : <span
+                                            th:text="${loan.extend? loan.loanDate.plusMonths(2) : loan.loanDate.plusMonths(1)}">00/00/0000</span>
+                                    </div>
+
+                                    <!--/* Extend button */-->
+                                    <div>
+                                        <a class="btn btn-sm" th:href="@{/mes-prets/etendre/{id}(id=${loan.id})}"
+                                            th:classappend="${loan.extend? 'btn-secondary disabled' : 'btn-primary'}">Etendre
+                                            le
+                                            prêt</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
+
             </div>
         </div>
-
-
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>

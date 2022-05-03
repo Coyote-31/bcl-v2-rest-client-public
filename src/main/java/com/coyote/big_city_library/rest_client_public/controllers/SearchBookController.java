@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.coyote.big_city_library.rest_client_public.dto.LibraryDto;
 import com.coyote.big_city_library.rest_client_public.dto.search_books.SearchBookDto;
 import com.coyote.big_city_library.rest_client_public.form_handlers.SearchBookForm;
 import com.coyote.big_city_library.rest_client_public.services.LibraryService;

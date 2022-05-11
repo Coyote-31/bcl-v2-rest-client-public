@@ -16,18 +16,27 @@
 
     <div class="container">
 
-        <h1 class="text-center">Bienvenue ! <span th:if="${session.pseudo}" th:text="${session.pseudo}"></span></h1>
 
-        <div class="alert alert-primary" role="alert" th:if="${session.jwt}">
-            JWT : <span class="text-break" th:text="${session.jwt}"></span>
-        </div>
 
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Long_Room_Interior%2C_Trinity_College_Dublin%2C_Ireland_-_Diliff.jpg/800px-Long_Room_Interior%2C_Trinity_College_Dublin%2C_Ireland_-_Diliff.jpg"
-            class="img-fluid rounded mx-auto d-block" alt="Bibliothèques">
+            class="img-fluid img-thumbnail mx-auto d-block" alt="Bibliothèques">
 
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi amet quos omnis.
-            Error voluptates cum nihil necessitatibus odit. A ratione autem minus minima beatae.
-            Consequuntur delectus eaque aliquid a at.</p>
+        <div class="jumbotron mt-2">
+            <h1 class="text-center h1">
+                Bienvenue
+                <span th:if="${session.pseudo}" th:text="'' + ${session.pseudo}"></span>
+                !
+            </h1>
+            <p class="lead">Vous êtes sur le site du service culturel de la ville.</p>
+            <hr class="my-4">
+            <p>Vous pouvez rechercher des livres sans être inscrit. Mais la gestion des prêts nécessite d'être déjà
+                inscrit. Pour cela rien de plus simple : rendez-vous dans la bibliothèque la plus proche de chez vous et
+                faites la demande au guichet. Vous pourrez alors accéder à des milliers de livres et étendre un prêt en
+                cours depuis ce site. Un mail vous sera envoyé si vous avez oublié ramener un livre !</p>
+        </div>
+
+        <p></p>
+        <p></p>
 
     </div>
 

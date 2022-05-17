@@ -18,62 +18,112 @@
 
         <h1>Recherche de livres</h1>
 
-        <h2>Formulaire de recherche :</h2>
+        <hr>
 
         <form action="#" th:action="@{/recherche}" th:object="${search_form}" method="post">
 
-            <div class="mb-3">
-                <label for="bookTitleInput" class="form-label">Titre</label>
-                <input type="text" class="form-control" id="bookTitleInput" th:field="*{bookTitle}" />
+            <div class="row">
+
+                <div class="input-group col-xl mb-2 mb-xl-0">
+                    <div class="input-group-prepend">
+                        <label for="bookTitleInput" class="input-group-text">Titre</label>
+                    </div>
+                    <input type="text" class="form-control" id="bookTitleInput" th:field="*{bookTitle}" />
+                </div>
+
+                <div class="input-group col-xl mb-2 mb-xl-0">
+                    <div class="input-group-prepend">
+                        <label for="authorNameInput" class="input-group-text">Auteur</label>
+                    </div>
+                    <input type="text" class="form-control" id="authorNameInput" th:field="*{authorName}" />
+                </div>
+
+                <div class="input-group col-xl mb-2 mb-xl-0">
+                    <div class="input-group-prepend">
+                        <label for="publisherNameInput" class="input-group-text">Editeur</label>
+                    </div>
+                    <input type="text" class="form-control" id="publisherNameInput" th:field="*{publisherName}" />
+                </div>
+
+                <div class="col-12 col-xl-auto">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="mb-3">
-                <label for="authorNameInput" class="form-label">Auteur</label>
-                <input type="text" class="form-control" id="authorNameInput" th:field="*{authorName}" />
-            </div>
-
-            <div class="mb-3">
-                <label for="publisherNameInput" class="form-label">Editeur</label>
-                <input type="text" class="form-control" id="publisherNameInput" th:field="*{publisherName}" />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Valider</button>
 
         </form>
 
+        <hr>
+
+        <!--/* NO Result */-->
+        <div th:unless="${!#lists.isEmpty(books_found)}">
+
+            <div class="alert alert-primary">
+                Pour rechercher un livre veuillez utiliser au moins un critère de recherche et cliquer sur le bouton
+                valider.
+            </div>
+
+        </div>
+
         <!--/* Result of the book research */-->
         <div th:unless="${#lists.isEmpty(books_found)}">
+
             <h2>Résultat(s) :</h2>
 
             <div class="row">
 
-                <div th:each="book : ${books_found}" class="border my-1">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img th:src="${book.imgURL}" class="img-fluid rounded-start"
-                                    alt="Image de la couverture du livre.">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 th:text="${book.title}" class="card-title">Card title</h5>
+                <!--/* Book card */-->
+                <div th:each="book : ${books_found}" class="card col-xl-6 border-0 p-2">
+
+                    <div class="row g-0 border border-dark border-2 rounded h-100">
+                        <div class="col-md-4 bg-dark d-flex align-items-center justify-content-center">
+                            <img th:src="${book.imgURL}" class="img-fluid" alt="Image de la couverture du livre.">
+                        </div>
+                        <div class="col-md-8 border-top-md-start-2 border-dark pb-auto">
+                            <div class="card-body">
+                                <h3 th:text="${book.title}" class="card-title mb-0">Card title</h3>
+                                <hr class="my-2">
+                                <div class="mt-2">
                                     <div> Auteur(s) :
                                         <span th:each="author : ${book.authors}">
                                             <span th:text="${author.name}">Author</span>
                                         </span>
                                     </div>
                                     <div>Editeur : <span th:text="${book.publisher.name}">Publisher</span></div>
-                                    <div>Date : <span th:text="${book.publicationDate}">00/00/0000</span></div>
-                                    <div>Exemplaires : <span th:text="${#lists.size(book.exemplaries)}">7</span></div>
+                                    <div>Edition : <span th:text="${book.publicationDate}">00/00/0000</span></div>
+                                </div>
+
+                                <hr class="my-2">
+
+                                <div class="mb-2">
+                                    Exemplaires : <span th:text="${#lists.size(book.exemplaries)}">7</span>
+                                </div>
+
+                                <!--/* Display disponibility */-->
+                                <div th:if="${book.isAvailable}">
                                     <!--/* Loop on libraries */-->
-                                    <div th:each="library : ${book.getExemplariesByLibrary()}" class="border my-1">
-                                        <span th:text="${library.key}">Bibliothèque n°1 </span> : <span
-                                            th:text="${library.value}">42</span>
+                                    <div th:each="library : ${book.getExemplariesByLibrary()}"
+                                        class="alert alert-success py-1 mt-2 mb-0">
+                                        <span th:text="${library.key}">Bibliothèque n°1</span>
+                                        :
+                                        <span th:text="${library.value}">42</span>
+                                    </div>
+                                </div>
+
+                                <!--/* Display unavailability */-->
+                                <div th:unless="${book.isAvailable}">
+                                    <!--/* Loop on libraries */-->
+                                    <div class="alert alert-danger py-1 mt-2 mb-0">
+                                        Indisponible
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

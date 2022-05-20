@@ -16,23 +16,35 @@
 
     <div class="container">
 
-        <h1>Connexion</h1>
+        <h1 class="text-center">Connexion</h1>
+
+        <hr>
 
         <div class="alert alert-danger" role="alert" th:if="${error}" th:text="${error}"></div>
 
         <form action="#" th:action="@{/authentification/connexion}" th:object="${login}" method="post">
 
-            <div class="mb-3">
-                <label for="username" class="form-label">Pseudo</label>
-                <input type="text" class="form-control" id="username" th:field="*{username}" />
+            <div class="row justify-content-center">
+
+                <div class="col-md-5 col-lg-4 col-xl-3 align-self-center mb-3">
+                    <label for="username" class="form-label">Pseudo</label>
+                    <input type="text" class="form-control" id="username" th:field="*{username}" />
+                </div>
+
             </div>
 
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="text" class="form-control" id="password" th:field="*{password}" />
+            <div class="row justify-content-center">
+
+                <div class="col-md-5 col-lg-4 col-xl-3 align-self-center mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="text" class="form-control" id="password" th:field="*{password}" />
+                </div>
+
             </div>
 
-            <button type="submit" class="btn btn-primary">Valider</button>
+            <div class="d-flex justify-content-center mt-2">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
 
         </form>
 

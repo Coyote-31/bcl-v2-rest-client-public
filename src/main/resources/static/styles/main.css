@@ -148,7 +148,7 @@ h5,
 /* No media query for `xs` since this is the default in Bootstrap */
 
 html {
-    font-size: 160%;
+    font-size: 120%;
 }
 
 .border-top-md-start-2 {
@@ -159,14 +159,14 @@ html {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     html {
-        font-size: 140%;
+        font-size: 115%;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     html {
-        font-size: 120%;
+        font-size: 110%;
     }
 
     .border-top-md-start-2 {
@@ -178,7 +178,7 @@ html {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     html {
-        font-size: 110%;
+        font-size: 105%;
     }
 }
 

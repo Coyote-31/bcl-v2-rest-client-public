@@ -18,7 +18,45 @@
 
         <h1 class="text-center">Oups ! Une erreur 403 est survenue !</h1>
 
-        <p>Veuillez vous connecter pour accéder à cette page.</p>
+        <hr>
+
+        <div class="d-flex justify-content-center">
+
+            <div class="alert alert-warning">
+                Vous devez être connecté pour accéder à cette page :
+            </div>
+
+        </div>
+
+
+
+        <form action="#" th:action="@{/authentification/connexion}" method="post">
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-5 col-lg-4 col-xl-3 align-self-center mb-3">
+                    <label for="username" class="form-label">Pseudo</label>
+                    <input type="text" class="form-control" id="username" />
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-5 col-lg-4 col-xl-3 align-self-center mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="text" class="form-control" id="password" />
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-center mt-2">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+
+        </form>
+
+
 
     </div>
 

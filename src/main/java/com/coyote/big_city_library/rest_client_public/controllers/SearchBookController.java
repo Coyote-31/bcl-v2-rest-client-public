@@ -47,6 +47,7 @@ public class SearchBookController {
         List<SearchBookDto> booksFound = searchBookService.searchBooks(searchBookForm);
         log.debug("booksFound.size() = {}", booksFound.size());
         model.addAttribute("books_found", booksFound);
+        model.addAttribute("is_empty_result", booksFound.isEmpty());
 
         return "SearchBookForm";
     }

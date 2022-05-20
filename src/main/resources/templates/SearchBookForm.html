@@ -59,7 +59,23 @@
         <hr>
 
         <!--/* NO Result */-->
-        <div th:unless="${!#lists.isEmpty(books_found)}">
+        <div th:if="${is_empty_result == null}">
+
+            <div class="alert alert-primary">
+                Pour rechercher un livre veuillez utiliser au moins un critère de recherche et cliquer sur le bouton
+                valider.
+            </div>
+
+        </div>
+
+        <!--/* NO Result */-->
+        <div th:if="${is_empty_result}">
+
+            <h2>Résultat(s) :</h2>
+
+            <div class="alert alert-warning">
+                Aucun livre ne correspond à la recherche !
+            </div>
 
             <div class="alert alert-primary">
                 Pour rechercher un livre veuillez utiliser au moins un critère de recherche et cliquer sur le bouton

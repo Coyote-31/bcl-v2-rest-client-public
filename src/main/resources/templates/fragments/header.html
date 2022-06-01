@@ -25,21 +25,19 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-between me-1" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-                <div class="navbar-nav flex-row">
+                <div class="navbar-nav flex-row justify-content-lg-start justify-content-center flex-grow-1">
                     <a class="nav-link ms-2 p-2 mb-3 mb-lg-auto" aria-current="page" th:href="@{/}">Accueil</a>
                     <a class="nav-link ms-2 p-2 mb-3 mb-lg-auto" th:href="@{/recherche}">Recherche</a>
                     <a th:if="${session.pseudo != null}" class="nav-link ms-2 p-2 mb-3 mb-lg-auto"
                         th:href="@{/mes-prets}">Mes Prêts</a>
                 </div>
-                <div th:if="${session.pseudo == null}">
-                    <a class="btn btn-primary ms-2 me-auto p-2 mb-3 mb-lg-auto"
-                        th:href="@{/authentification/connexion}">Connexion</a>
+                <div th:if="${session.pseudo == null}" class="d-flex justify-content-end mb-1 mb-lg-0">
+                    <a class="btn btn-primary" th:href="@{/authentification/connexion}">Connexion</a>
                 </div>
-                <div th:if="${session.pseudo != null}">
-                    <a class="btn btn-danger ms-2 me-auto p-2 mb-3 mb-lg-auto"
-                        th:href="@{/authentification/deconnexion}">Deconnexion</a>
+                <div th:if="${session.pseudo != null}" class="d-flex justify-content-end mb-1 mb-lg-0">
+                    <a class="btn btn-danger" th:href="@{/authentification/deconnexion}">Deconnexion</a>
                 </div>
             </div>
 

@@ -153,7 +153,9 @@ html {
 }
 
 .navbar-collapse {
-    margin-top: 0.7rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #383b3f;
 }
 
 .border-top-md-start-2 {
@@ -188,6 +190,8 @@ html {
 
     .navbar-collapse {
         margin-top: 0rem;
+        padding-top: 0rem;
+        border-top: none;
     }
 }
 

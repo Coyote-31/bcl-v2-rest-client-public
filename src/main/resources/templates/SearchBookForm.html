@@ -106,8 +106,9 @@
                                 <hr class="my-2">
                                 <div class="mt-2">
                                     <div> Auteur(s) :
-                                        <span th:each="author : ${book.authors}">
+                                        <span th:each="author, iTrack : ${book.authors}">
                                             <span th:text="${author.name}">Author</span>
+                                            <span th:unless="${iTrack.last}">/</span>
                                         </span>
                                     </div>
                                     <div>Editeur : <span th:text="${book.publisher.name}">Publisher</span></div>

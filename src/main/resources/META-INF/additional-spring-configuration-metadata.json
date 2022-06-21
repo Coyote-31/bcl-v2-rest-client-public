@@ -6,7 +6,7 @@
             "description": "A description for 'feign_clients.url'"
         },
         {
-            "name": "security.jwt.secretKey",
+            "name": "security.jwt.secret-key",
             "type": "java.lang.String",
             "description": "Security password for jwts"
         }

@@ -12,7 +12,7 @@ import io.jsonwebtoken.Jwts;
 @Service
 public class JwtService {
 
-    @Value("${security.jwt.secretKey}")
+    @Value("${security.jwt.secret-key}")
     private String jwtSecretKey = "secret";
 
     public String getBearerJwt(HttpSession session) {

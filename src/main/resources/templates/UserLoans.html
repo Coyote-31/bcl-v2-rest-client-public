@@ -46,9 +46,10 @@
                                 </h3>
                                 <hr class="my-2">
                                 <!--/* Book details */-->
-                                <div> Auteur(s) :
-                                    <span th:each="author : ${loan.exemplary.book.authors}">
+                                <div>Auteur(s) :
+                                    <span th:each="author, iTrack : ${loan.exemplary.book.authors}">
                                         <span th:text="${author.name}">Author</span>
+                                        <span th:unless="${iTrack.last}">/</span>
                                     </span>
                                 </div>
                                 <div>Editeur : <span th:text="${loan.exemplary.book.publisher.name}">Publisher</span>
@@ -105,9 +106,10 @@
                                 <h3 th:text="${loan.exemplary.book.title}" class="card-title mb-0">Book Title</h3>
                                 <hr class="my-2">
                                 <!--/* Book details */-->
-                                <div> Auteur(s) :
-                                    <span th:each="author : ${loan.exemplary.book.authors}">
+                                <div>Auteur(s) :
+                                    <span th:each="author, iTrack : ${loan.exemplary.book.authors}">
                                         <span th:text="${author.name}">Author</span>
+                                        <span th:unless="${iTrack.last}">/</span>
                                     </span>
                                 </div>
                                 <div>Editeur : <span th:text="${loan.exemplary.book.publisher.name}">Publisher</span>

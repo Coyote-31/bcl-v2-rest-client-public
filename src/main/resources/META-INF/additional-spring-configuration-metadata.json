@@ -1,0 +1,14 @@
+{
+    "properties": [
+        {
+            "name": "feign_clients.url",
+            "type": "java.lang.String",
+            "description": "A description for 'feign_clients.url'"
+        },
+        {
+            "name": "security.jwt.secretKey",
+            "type": "java.lang.String",
+            "description": "Security password for jwts"
+        }
+    ]
+}

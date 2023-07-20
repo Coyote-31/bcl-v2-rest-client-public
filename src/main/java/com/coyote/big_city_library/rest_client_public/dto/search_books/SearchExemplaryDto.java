@@ -16,4 +16,5 @@ public class SearchExemplaryDto {
     private SearchLibraryDto library;
 
     private Set<SearchLoanDto> loans;
+
 }

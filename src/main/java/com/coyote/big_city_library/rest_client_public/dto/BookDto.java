@@ -31,4 +31,8 @@ public class BookDto {
 
     private String imgURL;
 
+    private Set<ExemplaryDto> exemplaries;
+
+    private Set<ReservationDto> reservations;
+
 }

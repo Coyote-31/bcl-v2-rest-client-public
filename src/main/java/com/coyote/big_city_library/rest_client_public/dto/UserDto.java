@@ -1,5 +1,7 @@
 package com.coyote.big_city_library.rest_client_public.dto;
 
+import java.util.Set;
+
 import com.coyote.big_city_library.rest_client_public.security.Role;
 
 import lombok.Getter;
@@ -31,5 +33,9 @@ public class UserDto {
 
     @NonNull
     private Role role = Role.USER;
+
+    private Set<LoanDto> loans;
+
+    private Set<ReservationDto> reservations;
 
 }

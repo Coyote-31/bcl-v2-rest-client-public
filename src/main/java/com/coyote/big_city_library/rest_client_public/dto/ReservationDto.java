@@ -1,6 +1,7 @@
 package com.coyote.big_city_library.rest_client_public.dto;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -11,22 +12,17 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class LoanDto {
-
-    private Integer id;
+public class ReservationDto {
 
     @NonNull
-    private LocalDate loanDate;
-
-    @NonNull
-    private Boolean extend = false;
-
-    private LocalDate returnDate;
-
-    @NonNull
-    private ExemplaryDto exemplary;
+    private BookDto book;
 
     @NonNull
     private UserDto user;
+
+    @NonNull
+    private ZonedDateTime createdAt;
+
+    private ZonedDateTime notifiedAt;
 
 }

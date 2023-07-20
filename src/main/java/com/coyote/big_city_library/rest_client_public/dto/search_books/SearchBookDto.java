@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import com.coyote.big_city_library.rest_client_public.dto.AuthorDto;
 import com.coyote.big_city_library.rest_client_public.dto.PublisherDto;
+import com.coyote.big_city_library.rest_client_public.dto.ReservationDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,8 @@ public class SearchBookDto {
     private String imgURL;
 
     private Boolean available;
+
+    private Set<ReservationDto> reservations;
 
     /**
      * Test the availability.

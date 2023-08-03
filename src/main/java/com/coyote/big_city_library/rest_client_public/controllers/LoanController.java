@@ -27,9 +27,9 @@ public class LoanController {
     @GetMapping("")
     public String getUserLoans(HttpSession session, Model model) {
 
-        // If session doesn't exist -> 403
+        // If session doesn't exist -> 401
         if (session == null || session.getAttribute("pseudo") == null) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
         List<LoanDto> loans = loanService.findLoansByUserPseudo(session, session.getAttribute("pseudo").toString());
@@ -42,6 +42,11 @@ public class LoanController {
 
     @GetMapping("/etendre/{id}")
     public String extendLoan(HttpSession session, @PathVariable Integer id) {
+
+        // If session doesn't exist -> 401
+        if (session == null || session.getAttribute("pseudo") == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        }
 
         loanService.extendLoan(session, id);
 

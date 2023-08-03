@@ -30,6 +30,8 @@
 
         <p class="text-center">Veuillez réessayer plus tard...</p>
 
+        <p class="alert alert-warning" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>

@@ -30,6 +30,10 @@
 
         <p class="text-center">La ressource demandée n'a pas été trouvée.</p>
 
+        <div th:if="${errorMessage}" class="row justify-content-md-center">
+            <div class="alert alert-warning col-md-auto" th:text="${errorMessage}"></div>
+        </div>
+
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>

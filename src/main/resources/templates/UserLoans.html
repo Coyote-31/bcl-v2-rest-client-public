@@ -70,7 +70,7 @@
                                 <!--/* Extend button */-->
                                 <div class="mt-2">
                                     <a class="btn btn-sm" th:href="@{/mes-prets/etendre/{id}(id=${loan.id})}"
-                                        th:classappend="${loan.extend? 'btn-secondary disabled' : 'btn-primary'}">
+                                        th:classappend="${(loan.extend OR (loan.loanDate.plusWeeks(4) lt localDateNow) ) ? 'btn-secondary disabled' : 'btn-primary'}">
                                         Etendre le prêt</a>
                                 </div>
                             </div>

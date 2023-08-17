@@ -1,9 +1,9 @@
 package com.coyote.big_city_library.rest_client_public.dto;
 
 import java.util.Set;
-
 import com.coyote.big_city_library.rest_client_public.security.Role;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -29,6 +29,7 @@ public class UserDto {
      *
      * @see com.coyote.big_city_library.rest_server.dto.UserMapper
      */
+    @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
 
     @NonNull

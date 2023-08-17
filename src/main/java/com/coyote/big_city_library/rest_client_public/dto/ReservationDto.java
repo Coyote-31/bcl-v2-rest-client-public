@@ -1,7 +1,6 @@
 package com.coyote.big_city_library.rest_client_public.dto;
 
 import java.time.ZonedDateTime;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -24,5 +23,7 @@ public class ReservationDto {
     private ZonedDateTime createdAt;
 
     private ZonedDateTime notifiedAt;
+
+    private ExemplaryDto exemplary;
 
 }

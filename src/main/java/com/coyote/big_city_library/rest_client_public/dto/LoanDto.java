@@ -23,6 +23,7 @@ public class LoanDto {
 
     private LocalDate returnDate;
 
+    @NonNull
     private ExemplaryDto exemplary;
 
     @NonNull

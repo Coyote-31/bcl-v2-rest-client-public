@@ -38,6 +38,8 @@
                     <a class="nav-link ms-2 p-2 mb-3 mb-lg-auto" th:href="@{/recherche}">Recherche</a>
                     <a th:if="${session.pseudo != null}" class="nav-link ms-2 p-2 mb-3 mb-lg-auto"
                         th:href="@{/mes-prets}">Mes Prêts</a>
+                    <a th:if="${session.pseudo != null}" class="nav-link ms-2 p-2 mb-3 mb-lg-auto"
+                        th:href="@{/mes-reservations}">Mes Réservations</a>
                 </div>
                 <div th:if="${session.pseudo == null}" class="d-flex justify-content-end mb-1 mb-lg-0">
                     <a class="btn btn-primary" th:href="@{/authentification/connexion}">Connexion</a>

@@ -1,4 +1,4 @@
-package com.coyote.big_city_library.rest_client_public.dto;
+package com.coyote.big_city_library.rest_client_public.dto.reservation.my;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -7,30 +7,24 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Setter
-public class ReservationDto {
+public class MyReservationDto {
 
-    @NonNull
-    private BookDto book;
+    private MyBookDto book;
 
-    @NonNull
-    private UserDto user;
+    private MyUserDto user;
 
-    @NonNull
     private ZonedDateTime createdAt;
 
     private ZonedDateTime notifiedAt;
 
-    private ExemplaryDto exemplary;
+    private MyExemplaryDto exemplary;
 
     /*
      * Getters for dates in Europe/Paris TZ
@@ -54,18 +48,27 @@ public class ReservationDto {
 
     public Integer getUserReservationPosition() {
 
+        log.debug("getUserReservationPosition for book='{}' :", book.getTitle());
+
         // Convert reservations Set to List
-        List<ReservationDto> reservations = new ArrayList<>(book.getReservations());
+        List<MyReservationInBookDto> reservations = new ArrayList<>(book.getReservations());
 
         // Sort by CreatedAt Ascending
-        reservations.sort((a, b) -> a.getCreatedAt().compareTo(b.createdAt));
+        reservations.sort((a, b) -> a.getCreatedAt().compareTo(b.getCreatedAt()));
 
-        int count = 1;
-        for (ReservationDto reservation : reservations) {
-            log.debug("Reservation #{} -> createdAt:{}", count, reservation.getCreatedAt());
+        int count = 0;
+        int position = 0;
+
+        for (MyReservationInBookDto reservation : reservations) {
             count++;
+            log.debug("Reservation #{} -> createdAt:{}", count, reservation.getCreatedAt());
+
+            // If its the owning reservation user copy the position
+            if (reservation.getUser().getId().equals(user.getId())) {
+                position = count;
+            }
         }
 
-        return count;
+        return position;
     }
 }

@@ -1,5 +1,6 @@
 package com.coyote.big_city_library.rest_client_public.dto;
 
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -19,4 +20,9 @@ public class ExemplaryDto {
 
     @NonNull
     private BookDto book;
+
+    private Set<LoanDto> loans;
+
+    private ReservationDto reservation;
+
 }

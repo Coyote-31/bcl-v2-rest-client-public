@@ -143,7 +143,53 @@
                                     <!--/* Loop on libraries */-->
                                     <div class="alert alert-danger py-1 mt-2 mb-0">
                                         Indisponible
+                                        <div th:if="${not #lists.isEmpty(book.reservations)}"
+                                            th:text="|Nombre de réservations : ${book.reservations.size()}|">7
+                                        </div>
+                                        <div th:if="${#lists.isEmpty(book.reservations)}">
+                                            Aucune réservation en cours
+                                        </div>
+                                        <div>
+                                            Prochain retour :
+                                            <span th:text="${book.getClosestDateReturnLoan()}"></span>
+                                        </div>
                                     </div>
+                                    <!--/* Display reservation button */-->
+                                    <!--/* If user is log in and not already reserved by him */-->
+                                    <!--/* If user is not already loaning this book */-->
+                                    <!--/* and reservations size is ok */-->
+                                    <div th:if="${session.pseudo != null
+                                        && not book.isAlreadyReservedByPseudo(session.pseudo)
+                                        && not book.isAlreadyLoanedByPseudo(session.pseudo)
+                                        && book.exemplaries.size() * 2 > book.reservations.size()}"
+                                        class="d-flex justify-content-center mt-2">
+                                        <form th:action="@{'/mes-reservations/add'(bookId=${book.id})}" th:method="post"
+                                            class="d-flex justify-content-center mt-2">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                Réserver
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!--/* INFO : Book already reserved by the user */-->
+                                <div th:if="${session.pseudo != null
+                                    && book.isAlreadyReservedByPseudo(session.pseudo)}"
+                                    class="alert alert-warning py-1 mt-2 mb-0">
+                                    Vous avez une réservation sur ce livre
+                                </div>
+
+                                <!--/* INFO : Book currently loaned by the user */-->
+                                <div th:if="${session.pseudo != null
+                                    && book.isAlreadyLoanedByPseudo(session.pseudo)}"
+                                    class="alert alert-warning py-1 mt-2 mb-0">
+                                    Vous avez ce livre en location
+                                </div>
+
+                                <!--/* INFO : Book full of reservations */-->
+                                <div th:if="${book.exemplaries.size() * 2 <= book.reservations.size()}"
+                                    class="alert alert-warning py-1 mt-2 mb-0">
+                                    Trop de réservations en cours
                                 </div>
                             </div>
                         </div>

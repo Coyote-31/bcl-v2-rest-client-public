@@ -3,9 +3,14 @@
 ## ✨ Présentation :
 
 Ce projet a pour but la création d’un ensemble d’outils numériques pour les différents acteurs des bibliothèques d'une ville.
-1. Un Front-end : RESTFull Client Public ([GitHub](https://github.com/Coyote-31/big_city_library.rest_client_public))
-2. Un Back-end : RESTFull Serveur (Projet développé ici [GitHub](https://github.com/Coyote-31/big_city_library.rest_server))
-3. Un envoi automatique de mails : BATCH ([GitHub](https://github.com/Coyote-31/batch))
+1. Un Back-end : RESTFull Serveur ([GitHub](https://github.com/Coyote-31/bcl-v2-rest-server))
+2. Un Front-end : RESTFull Client Public (Projet développé ici [GitHub](https://github.com/Coyote-31/bcl-v2-rest-client-public))
+3. Un envoi automatique de mails : BATCH ([GitHub](https://github.com/Coyote-31/bcl-v2-batch))
+
+L'objectif de ce projet est de continuer le développement en suivant les différents tickets :
+- Ticket #1 : [Ajoutez un système de réservation d’ouvrages](https://github.com/Coyote-31/bcl-v2-rest-server/issues/1)
+- Ticket #2 : [Corrigez un bug dans la gestion des prolongations de prêt (par le client)](https://github.com/Coyote-31/bcl-v2-rest-server/issues/2)
+- Ticket #3 : [Mettez en place une stratégie de tests](https://github.com/Coyote-31/bcl-v2-rest-server/issues/5)
 
 > **IMPORTANT:**
 > Ce projet fait partie du cursus de formation "Développeur J2EE" de [OpenClassroom](https://openclassrooms.com/).
@@ -15,7 +20,7 @@ Ce projet a pour but la création d’un ensemble d’outils numériques pour le
 ## 📱 Application :
 
 L'application est un serveur de type RESTFull développé en **Java EE** sur l'**IDE Visual Studio Code**.
-Cette application utilise le framework Spring et les dépendences MapStruct & Lombok et des JWT pour l'authentification.
+Cette application utilise le framework Spring et les dépendences MapStruct & Lombok.
 Elle est packagée via **[Maven](https://maven.apache.org/index.html)** dans un fichier `.war` pour être déployée sur un serveur compatible comme : **[Apache TomEE v9.0](https://tomee.apache.org/)**.
 
 #### Aperçu de l'application :
@@ -34,7 +39,7 @@ Et l'application présente ou recoit les données via des DTOs.
 
 #### Diagramme de l'architecture de la base de données :
 
-![Diagramme de l'architecture de la base de données](https://i.imgur.com/jrJgCXJ.png)
+![Diagramme de l'architecture de la base de données](https://i.imgur.com/Pm7bNz5.png)
 
 ## 🛠 Déploiement :
 
